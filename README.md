@@ -58,16 +58,23 @@ tasks:
       - "uuid-9999"
 ```
 
-To create the corresponding graph: 
+To create the graph corresponding to the previous code (file named `tmp.yaml`): 
 
+```bash
+python run.py tmp.yaml
 ```
-python run.py test.yaml
+
+To create an example graph: 
+
+```bash
+cd example_images
+python ../run.py example.yaml
 ```
 
 ### 📂 Output
 
 - output_prov.json: PROV-JSON representation of the workflow
-- output_graph.png: Graph visualization of tasks and data flow
+- output_graph.pdf: Graph visualization of tasks and data flow
 
 ![output_graph](example/output_graph.png)
 

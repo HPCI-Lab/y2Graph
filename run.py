@@ -93,8 +93,8 @@ class ProvWorkflowManager:
 
 
 
-    def render_graph(self, path):
-        dot = custom_prov_to_dot(self.doc)
+    def render_graph(self, path, direction="BT", show_element_attributes=True):
+        dot = custom_prov_to_dot(self.doc, direction=direction, show_element_attributes=show_element_attributes)
         dot_str = replace_nodes_with_images(dot.to_string())
 
         dot_path = os.path.splitext(path)[0] + ".dot"
@@ -177,12 +177,16 @@ if __name__ == "__main__":
 
     parser.add_argument("-j", "--json", help="Output JSON filename")
     parser.add_argument("-o", "--output", help="Output graph filename")
+    parser.add_argument("-p", "--pdf", default="True", help="Output to pdf file")
+    parser.add_argument("-d", "--direction", default="RL", help="Direction in which the nodes will be displayed")
+    parser.add_argument("-l", "--labels", default=True, help="If node labels will be displayed or not")
 
     args = parser.parse_args()
 
     # =========================
     # JOINED MODE
     # =========================
+    IMG_EXT = ".pdf" if args.pdf == "True" else ".png"
     if args.join:
         manager = ProvWorkflowManager()
 
@@ -197,13 +201,13 @@ if __name__ == "__main__":
             json_path += ".json"
 
         graph_path = args.output or "final_graph.pdf"
-        if not graph_path.endswith((".png", ".pdf")):
-            graph_path += ".pdf"
+        if not graph_path.endswith(IMG_EXT):
+            graph_path += IMG_EXT
 
         manager.deduplicate_relations()
         if not args.from_json: 
             manager.export_prov_json(json_path)
-        manager.render_graph(graph_path)
+        manager.render_graph(graph_path, direction=args.direction, show_element_attributes=args.labels)
 
     # =========================
     # SEPARATE MODE
@@ -221,4 +225,4 @@ if __name__ == "__main__":
             manager.deduplicate_relations()
             if not args.from_json: 
                 manager.export_prov_json(f"{base}.json")
-            manager.render_graph(f"{base}.pdf")
+            manager.render_graph(f"{base}{IMG_EXT}", direction=args.direction, show_element_attributes=args.labels)

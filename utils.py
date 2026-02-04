@@ -11,7 +11,6 @@ from xml.sax.saxutils import escape
 from datetime import datetime
 import pydot
 
-
 def replace_nodes_with_images(dot_content):
     def contains_image(line: str): 
         return ".png" in line or ".jpg" in line
@@ -38,7 +37,7 @@ def custom_prov_to_dot(
     bundle,
     show_nary=True,
     use_labels=False,
-    direction="RL",
+    direction="LR",
     show_element_attributes=True,
     show_relation_attributes=True,
 ):
