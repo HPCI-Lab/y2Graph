@@ -28,6 +28,11 @@ cd y2Graph
 pip install -r requirements.txt
 ```
 
+Or: 
+```
+pip install y2graph
+```
+
 ### Example YAML Workflow
 
 ```
