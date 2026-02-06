@@ -10,8 +10,17 @@ The files `example1.yaml` and `example2.yaml` are used as source, and the progra
 ```bash
 cd example_join
 
-python run.py example1.yaml example2.yaml --join -j combined.json -o combined.pdf
+y2g example1.yaml example2.yaml --join -j combined.json -o combined.pdf
 ```
+
+Or: 
+
+```bash
+cd example_join
+
+y2graph example1.yaml example2.yaml --join -j combined.json -o combined.pdf
+```
+
 
 ![ExampleJoined](./assets/joined.png)
 

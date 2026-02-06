@@ -10,7 +10,15 @@ The file `example.yaml` is used as source, and the program generates fist a W3C 
 ```bash
 cd example_simple
 
-python run.py example.yaml -j example.json -o example.pdf
+y2g example.yaml -j example.json -o example.pdf
+```
+
+Or: 
+
+```bash
+cd example_simple
+
+y2graph example.yaml -j example.json -o example.pdf
 ```
 
 ![ExampleSimple](./assets/simple.png)

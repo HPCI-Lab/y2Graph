@@ -51,7 +51,7 @@ tasks:
 To create the corresponding graph: 
 
 ```
-python run.py test.yaml
+y2graph test.yaml
 ```
 
 ### 📂 Output

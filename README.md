@@ -23,14 +23,15 @@ Check out the [yProv4ML documentation](https://hpci-lab.github.io/yProv4ML/insta
 Then: 
 
 ```
-git clone https://github.com/HPCI-Lab/y2Graph.git
-cd y2Graph
-pip install -r requirements.txt
+pip install y2graph
 ```
 
 Or: 
+
 ```
-pip install y2graph
+git clone https://github.com/HPCI-Lab/y2Graph.git
+cd y2Graph
+pip install -r requirements.txt
 ```
 
 ### Example YAML Workflow
@@ -66,14 +67,14 @@ tasks:
 To create the graph corresponding to the previous code (file named `tmp.yaml`): 
 
 ```bash
-python run.py tmp.yaml
+y2graph tmp.yaml
 ```
 
 To create an example graph: 
 
 ```bash
 cd example_images
-python ../run.py example.yaml
+y2graph example.yaml
 ```
 
 ### 📂 Output

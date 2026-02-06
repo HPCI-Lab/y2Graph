@@ -5,6 +5,12 @@ Check out the [yProv4ML documentation](https://hpci-lab.github.io/yProv4ML/insta
 Then: 
 
 ```bash
+pip install y2graph
+```
+
+Or: 
+
+```bash
 git clone https://github.com/HPCI-Lab/y2Graph.git
 cd y2Graph
 pip install -r requirements.txt

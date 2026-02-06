@@ -1,7 +1,7 @@
 import uuid
 import yaml
 from prov.model import ProvDocument
-from y2g.utils import custom_prov_to_dot, replace_nodes_with_images
+from y2graph.utils import custom_prov_to_dot, replace_nodes_with_images
 import argparse
 import os
 import subprocess
