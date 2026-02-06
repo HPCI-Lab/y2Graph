@@ -1,7 +1,7 @@
 import uuid
 import yaml
 from prov.model import ProvDocument
-from utils import custom_prov_to_dot, replace_nodes_with_images
+from y2g.utils import custom_prov_to_dot, replace_nodes_with_images
 import argparse
 import os
 import subprocess
@@ -151,9 +151,9 @@ class ProvWorkflowManager:
 
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
-        prog="y2Graph",
+        prog="y2graph",
         description="Build and merge W3C-PROV provenance graphs from YAML or PROV-JSON.",
     )
 
@@ -226,3 +226,6 @@ if __name__ == "__main__":
             if not args.from_json: 
                 manager.export_prov_json(f"{base}.json")
             manager.render_graph(f"{base}{IMG_EXT}", direction=args.direction, show_element_attributes=args.labels)
+
+if __name__ == "__main__":
+    main()

@@ -5,11 +5,11 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = [
-    "*"
+    "y2graph*"
 ]
 
 [project]
-name = "y2Graph"
+name = "y2graph"
 version = "0.0.1"
 authors = [
   { name="Gabriele Padovani", email="gabriele.padovani@unitn.it" },
@@ -27,6 +27,10 @@ dependencies = [
     "pydot", 
     "pyyaml",
 ]
+
+[project.scripts]
+y2graph = "y2graph.__main__:main"
+y2g = "y2graph.__main__:main"
 
 [project.urls]
 Homepage = "https://github.com/HPCI-Lab/y2Graph"

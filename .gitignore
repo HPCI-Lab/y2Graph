@@ -5,6 +5,10 @@ __pycache__
 examples
 tmp
 
+dist/
+build/
+y2graph.egg-info/
+
 *.dot
 *.json
 *.svg
