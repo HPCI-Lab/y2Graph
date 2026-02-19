@@ -1,4 +1,34 @@
-# y2Graph
+
+<div align="center">
+  <a href="https://github.com/HPCI-Lab">
+    <img src="./assets/HPCI-Lab.png" alt="HPCI Lab Logo" width="100" height="100">
+  </a>
+
+  <h3 align="center">y2Graph</h3>
+
+  <p align="center">
+    A simple Python tool to build W3C-PROV provenance graphs from workflow descriptions written in YAML.
+    <br />
+    <a href="https://hpci-lab.github.io/y2Graph/"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/HPCI-Lab/y2Graph/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    &middot;
+    <a href="https://github.com/HPCI-Lab/y2Graph/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
+<br />
+
+<div align="center">
+  
+[![Contributors](https://img.shields.io/github/contributors/HPCI-Lab/y2Graph?style=for-the-badge)](https://github.com/HPCI-Lab/y2Graph/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/HPCI-Lab/y2Graph?style=for-the-badge)](https://github.com/HPCI-Lab/y2Graph/network/members)
+[![Stars](https://img.shields.io/github/stars/HPCI-Lab/y2Graph?style=for-the-badge)](https://github.com/HPCI-Lab/y2Graph/stargazers)
+[![Issues](https://img.shields.io/github/issues/HPCI-Lab/y2Graph?style=for-the-badge)](https://github.com/HPCI-Lab/y2Graph/issues)
+[![GPLv3 License](https://img.shields.io/badge/LICENCE-GPL3.0-green?style=for-the-badge)](https://opensource.org/licenses/)
+
+</div>
 
 y2Graph (yaml to graph)  is a simple Python tool to build W3C-PROV provenance graphs from workflow descriptions written in YAML.
 It uses the prov library to create entities, activities, and their relationships, and can export the results to PROV-JSON and a graph visualization (PNG).
