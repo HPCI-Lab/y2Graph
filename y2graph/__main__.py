@@ -17,10 +17,12 @@ SHARED_URI = "shared"
 
 
 class ProvWorkflowManager:
-    def __init__(self):
+    def __init__(self, mode="separate"):
+        self.mode = mode
         self.doc = ProvDocument()
         self.doc.add_namespace(IDENTIFIER, IDENTIFIER)
-        self.doc.add_namespace(SHARED_NS, SHARED_URI)
+        if self.mode == "join": 
+            self.doc.add_namespace(SHARED_NS, SHARED_URI)
         self.entities = {}
         self.activities = {}
 
@@ -195,7 +197,11 @@ class ProvWorkflowManager:
                 continue
             new_data[section] = {}
             for key, val in data[section].items():
-                new_data[section][rewrite_id(key)] = val
+                if self.mode == "join": 
+                    new_data[section][rewrite_id(key)] = val
+                else: 
+                    new_data[section][key] = val
+
 
         # Relation types and the fields that hold identifier references
         relation_field_map = {
@@ -219,7 +225,7 @@ class ProvWorkflowManager:
             for blank_id, record in data[rel_type].items():
                 new_record = {}
                 for field, value in record.items():
-                    if field in ref_fields and isinstance(value, str):
+                    if field in ref_fields and isinstance(value, str) and self.mode == "join":
                         new_record[field] = rewrite_ref(value)
                     else:
                         new_record[field] = value
@@ -261,24 +267,9 @@ def main():
         description="Build and merge W3C-PROV provenance graphs from YAML or PROV-JSON.",
     )
 
-    parser.add_argument(
-        "filenames",
-        nargs="+",
-        help="Input files (YAML workflows or PROV JSONs)",
-    )
-
-    parser.add_argument(
-        "--from-json",
-        action="store_true",
-        help="Treat input files as PROV-JSON instead of YAML",
-    )
-
-    parser.add_argument(
-        "--join",
-        action="store_true",
-        help="Join all inputs into a single PROV document",
-    )
-
+    parser.add_argument("filenames",nargs="+",help="Input files (YAML workflows or PROV JSONs)")
+    parser.add_argument("--from-json",action="store_true",help="Treat input files as PROV-JSON instead of YAML")
+    parser.add_argument("--join",action="store_true",help="Join all inputs into a single PROV document")
     parser.add_argument("-j", "--json", help="Output JSON filename")
     parser.add_argument("-o", "--output", help="Output graph filename")
     parser.add_argument("-p", "--pdf", default="True", help="Output to pdf file")
@@ -293,7 +284,7 @@ def main():
     # JOINED MODE
     # =========================
     if args.join:
-        manager = ProvWorkflowManager()
+        manager = ProvWorkflowManager(mode="join")
 
         for file in args.filenames:
             if args.from_json:
@@ -319,7 +310,7 @@ def main():
     # =========================
     else:
         for file in args.filenames:
-            manager = ProvWorkflowManager()
+            manager = ProvWorkflowManager(mode="separate")
 
             if args.from_json:
                 manager.load_from_prov_json(file)
