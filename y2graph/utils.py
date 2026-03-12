@@ -11,7 +11,7 @@ from xml.sax.saxutils import escape
 from datetime import datetime
 import pydot
 
-def replace_nodes_with_images(dot_content):
+def replace_nodes_with_images(dot_content, w=400, h=300):
     def contains_image(line: str): 
         return ".png" in line or ".jpg" in line
     lines = dot_content.splitlines()
@@ -23,7 +23,7 @@ def replace_nodes_with_images(dot_content):
         if contains_image(stripped):
             try: 
                 img_path = stripped.split(">")[1].split("<")[0]
-                nl = f"<TD FIXEDSIZE=\"TRUE\" WIDTH=\"10\" HEIGHT=\"100\" ><IMG SRC=\"{img_path}\"/></TD>"
+                nl = f"<TD FIXEDSIZE=\"TRUE\" WIDTH=\"{w}\" HEIGHT=\"{h}\" ><IMG SRC=\"{img_path}\"/></TD>"
                 new_lines.append(nl)
             except: 
                 continue
